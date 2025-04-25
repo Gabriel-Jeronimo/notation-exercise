@@ -9,9 +9,6 @@ class Person {
         this.age = age;
     }
 
-    @Override
-    public String toString() {
-        return ToStringHandler.generate(this);
-    }
+
 }
 
