@@ -12,4 +12,4 @@ import java.lang.annotation.Target;
 public @interface ToStringNotation {
 }
 
-// @interface is used to indicate that is gonna be a notation
+// @interface is used to indicate that is going to be a notation
