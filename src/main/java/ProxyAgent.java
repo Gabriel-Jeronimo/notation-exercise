@@ -34,7 +34,7 @@ class ProxyAgent {
                 boolean hasAnnotations = false;
 
                 for (Object annotation : annotations) {
-                    if (annotation.toString().contains("AutoString")) {
+                    if (annotation.toString().contains("ToStringNotation")) {
                         hasAnnotations = true;
                         break;
                     }
@@ -55,7 +55,7 @@ class ProxyAgent {
                 if (!hasToString) {
                     CtMethod toStringMethod = new CtMethod(cp.get("java.lang.String"), "toString", new CtClass[0], cc);
 
-                    toStringMethod.setBody("{ return ToStringHandler.generateToString(this); }");
+                    toStringMethod.setBody("{ return ToStringHandler.generate(this); }");
                     cc.addMethod(toStringMethod);
                 }
 

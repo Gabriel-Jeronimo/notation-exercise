@@ -4,8 +4,6 @@ public class ToStringHandler {
     public static String generate(Object obj) {
         Class<?> targetClass = obj.getClass();
 
-        System.out.println("Hello, world");
-
         ToStringNotation notation = targetClass.getAnnotation(ToStringNotation.class);
         if (notation == null) {
             return obj.getClass().getName() + "@" + Integer.toHexString(obj.hashCode());
