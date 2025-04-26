@@ -1,3 +1,5 @@
+package notation;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.lang.instrument.ClassFileTransformer;
@@ -28,6 +30,7 @@ class ProxyAgent {
             // Explain a lil bit of Javaassisst
             try {
                 ClassPool cp = ClassPool.getDefault();
+                cp.appendClassPath(new LoaderClassPath(ClassLoader.getSystemClassLoader()));
                 CtClass cc = cp.makeClass(new ByteArrayInputStream(classfileBuffer));
 
                 Object[] annotations = cc.getAnnotations();
@@ -55,7 +58,7 @@ class ProxyAgent {
                 if (!hasToString) {
                     CtMethod toStringMethod = new CtMethod(cp.get("java.lang.String"), "toString", new CtClass[0], cc);
 
-                    toStringMethod.setBody("{ return ToStringHandler.generate(this); }");
+                    toStringMethod.setBody("{ return notation.ToStringHandler.generate(this); }");
                     cc.addMethod(toStringMethod);
                 }
 
