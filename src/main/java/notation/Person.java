@@ -1,11 +1,9 @@
 package notation;
 
 @ToStringNotation
-public class Person {
+public class Person implements IPerson {
     private String name;
     private int age;
-
-    public Person() {}
 
     public Person(String name, int age) {
         this.name = name;
